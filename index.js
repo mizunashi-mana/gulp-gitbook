@@ -92,21 +92,93 @@ var gulpGitbook = function (book, options, callback) {
 
   var p = Promise.resolve();
 
+  if (options.noInstall) {
+    p = p.then(function () {
+      return gitbookExec('install', [
+        options.book
+      ], {
+        log: options.log
+      });
+    });
+  }
+
+  var buildArgs = [
+    options.book,
+    options.outputDir
+  ];
+  var buildOptions = {
+    log: options.log
+  };
+
+  if (options.format === 'website') {
+    p = p.then(function () {
+      return gitbookExec('build', buildArgs, buildOptions);
+    });
+  } else if (options.format === 'pdf') {
+    p = p.then(function () {
+      return gitbookExec('pdf', buildArgs, buildOptions);
+    });
+  } else if (options.format === 'epub') {
+    p = p.then(function () {
+      return gitbookExec('epub', buildArgs, buildOptions);
+    });
+  } else if (options.format === 'mobi') {
+    p = p.then(function () {
+      return gitbookExec('mobi', buildArgs, buildOptions);
+    });
+  } else {
+    buildOptions.format = options.format;
+    p = p.then(function () {
+      return gitbookExec('build', buildArgs, buildOptions);
+    });
+  }
+
+  return promiseCallback(p, function (err) {
+    if (err) {
+      return options.callback(pluginError(err.message));
+    }
+    return options.callback();
+  });
+};
+
+var gulpGitbookWebsite = function (book, options, callback) {
+  options = extend({}, options);
+  options.format = 'website';
+  return gulpGitbook(book, options, callback);
+};
+gulpGitbook.website = gulpGitbookWebsite;
+
+var gulpGitbookPdf = function (book, options, callback) {
+  options = extend({}, options);
+  options.format = 'pdf';
+  return gulpGitbook(book, options, callback);
+};
+gulpGitbook.pdf = gulpGitbookPdf;
+
+var gulpGitbookEpub = function (book, options, callback) {
+  options = extend({}, options);
+  options.format = 'epub';
+  return gulpGitbook(book, options, callback);
+};
+gulpGitbook.epub = gulpGitbookEpub;
+
+var gulpGitbookMobi = function (book, options, callback) {
+  options = extend({}, options);
+  options.format = 'mobi';
+  return gulpGitbook(book, options, callback);
+};
+gulpGitbook.mobi = gulpGitbookMobi;
+
+var gulpGitbookInstall = function (book, options, callback) {
+  options = validateOptions(book, options, callback);
+
+  var p = Promise.resolve();
+
   p = p.then(function () {
     return gitbookExec('install', [
       options.book
     ], {
       log: options.log
-    });
-  });
-
-  p = p.then(function () {
-    return gitbookExec('build', [
-      options.book,
-      options.outputDir
-    ], {
-      log: options.log,
-      format: options.format
     });
   });
 
@@ -117,14 +189,46 @@ var gulpGitbook = function (book, options, callback) {
     return options.callback();
   });
 };
+gulpGitbook.install = gulpGitbookInstall;
+
+var gulpGitbookServe = function (book, options, callback) {
+  options = validateOptions(book, options, callback);
+
+  var p = Promise.resolve();
+
+  p = p.then(function () {
+    return gitbookExec('serve', [
+      options.book,
+      options.outputDir
+    ], {
+      log: options.log,
+      format: options.format,
+      open: options.noopen === undefined ? true : !options.noopen,
+      port: options.port,
+      live: options.livereload === undefined ? undefined : options.livereload !== false,
+      lrport: typeof options.livereload === 'object' ? options.livereload.port : undefined,
+      watch: typeof options.livereload === 'object' ? options.livereload.watch : undefined,
+      browser: options.browser
+    });
+  });
+
+  return promiseCallback(p, function (err) {
+    if (err) {
+      return options.callback(pluginError(err.message));
+    }
+    return options.callback();
+  });
+};
+gulpGitbook.serve = gulpGitbookServe;
 
 module.exports = gulpGitbook;
 
 if (process.env.GULPGITBOOK_TEST_ENV) {
   module.exports._private = {
     promiseCallback: promiseCallback,
-    gitbookExec: gitbookExec,
     isNullable: isNullable,
-    validateOptions: validateOptions
+    validateOptions: validateOptions,
+    gitbookExec: gitbookExec,
+    commands: commands
   };
 }

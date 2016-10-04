@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
     "eslint": "^3.7.1",
     "gitbook": "^3.2.2",
     "gulp": "^3.9.1",

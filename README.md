@@ -22,6 +22,8 @@ gulp.task('build-doc', function (cb) {
 
 ## API
 
+*gulpGitbook*
+
 ```javascript
 gulpGitbook(callback)
 gulpGitbook(book, callback)
@@ -34,6 +36,7 @@ gulpGitbook(book, options, callback)
 ### options
 
 ### callback
+
 
 ## License
 
