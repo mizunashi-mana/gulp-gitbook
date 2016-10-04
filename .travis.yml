@@ -13,7 +13,7 @@ env:
   matrix:
     - GITBOOK_VERSION=2.6.7
     - GITBOOK_VERSION=3.2.2
-before_script:
+install:
   - npm install
   - npm install gitbook@$GITBOOK_VERSION
 script:
