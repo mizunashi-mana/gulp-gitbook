@@ -1,4 +1,4 @@
-# gulp-gitbook [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url]
+# gulp-gitbook [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage Status][coveralls-image]][coveralls-url]
 
 > A [Gulp](http://gulpjs.com/) plugin for [GitBook](https://github.com/GitbookIO/gitbook/)
 
@@ -34,3 +34,17 @@ gulpGitbook(book, options, callback)
 ### options
 
 ### callback
+
+## License
+
+MIT © [Mizunashi Mana](https://github.com/mizunashi-mana)
+
+
+[npm-image]: https://badge.fury.io/js/generator-node-gulp-ts.svg
+[npm-url]: https://npmjs.org/package/generator-node-gulp-ts
+[travis-image]: https://travis-ci.org/mizunashi-mana/generator-node-gulp-ts.svg?branch=master
+[travis-url]: https://travis-ci.org/mizunashi-mana/generator-node-gulp-ts
+[daviddm-image]: https://david-dm.org/mizunashi-mana/generator-node-gulp-ts.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/mizunashi-mana/generator-node-gulp-ts
+[coveralls-image]: https://img.shields.io/coveralls/mizunashi-mana/gulp-gitbook.svg
+[coveralls-url]: https://coveralls.io/r/mizunashi-mana/gulp-gitbook
