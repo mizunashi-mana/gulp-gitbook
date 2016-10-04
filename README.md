@@ -40,11 +40,11 @@ gulpGitbook(book, options, callback)
 MIT © [Mizunashi Mana](https://github.com/mizunashi-mana)
 
 
-[npm-image]: https://badge.fury.io/js/generator-node-gulp-ts.svg
-[npm-url]: https://npmjs.org/package/generator-node-gulp-ts
-[travis-image]: https://travis-ci.org/mizunashi-mana/generator-node-gulp-ts.svg?branch=master
-[travis-url]: https://travis-ci.org/mizunashi-mana/generator-node-gulp-ts
-[daviddm-image]: https://david-dm.org/mizunashi-mana/generator-node-gulp-ts.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/mizunashi-mana/generator-node-gulp-ts
+[npm-image]: https://badge.fury.io/js/gulp-gitbook.svg
+[npm-url]: https://npmjs.org/package/gulp-gitbook
+[travis-image]: https://travis-ci.org/mizunashi-mana/gulp-gitbook.svg?branch=master
+[travis-url]: https://travis-ci.org/mizunashi-mana/gulp-gitbook
+[daviddm-image]: https://david-dm.org/mizunashi-mana/gulp-gitbook.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/mizunashi-mana/gulp-gitbook
 [coveralls-image]: https://img.shields.io/coveralls/mizunashi-mana/gulp-gitbook.svg
 [coveralls-url]: https://coveralls.io/r/mizunashi-mana/gulp-gitbook

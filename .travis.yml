@@ -5,17 +5,20 @@ language: node_js
 node_js:
   - stable
   - v6
-	- '0.12'
+  - '0.12'
 env:
+  global:
+    - COVERALLS_SERVICE_NAME=travis-ci
+    - secure: "a0K3tk5beUVDXQObZ/xgaSPHbIcmV5NQbCgoLZ20WgBOxlVyRF9O4KryBaUCHkqxNFemg7CQxhehZyGQ078p7RRK5AvssxqpupNu+FQP7CyYFFszsoeg3AnD1r939JVoatlGOjtdjxKhFTbHEIX4oU6xUanTF/D4ewubEyjD6e6oEImiQMMbU11Ztui2ghWoUWIZpyZmYD//zlUjuHZk+RmaZInEiwNAlYxRIdKNT7ODjY1eCj6aGE8GUYr7m22Fl3l+/lC37A6Uh3dJHKG19413PNATyZnXWqR9tCXanWxQleRvyn9FixQTOgsnjrpUORsbtoeIY/pb8vXOa+VQeikHKyuKB3VLP760Lu5D1+QEJCoGOMmuLC4dNPUL/1dV6JKEITQ+sE22gX0vsHI0rlF+oQK10pJT0JfX+o/uUIS6mGwGA9kALKqKuhQbwhV1VS6w4I0Gk/wht0UgTPgCGlLYfUPkPdqdRckUeBOghnL9HmMhx56wu14usH1QtgjIftTQfCG2S7t3pzEEw0T2N4FjZJSDTReyzOO01wmYvCkDipEuBQDhvxwGVpF22RTwalZmiilO8FHxShREa3F++ldk97X3UHhHgwpY4MT+0bEJIZGqKa20qkJC+bLffGQ2b75U+3uMqJeQpvq0qLJ5EdQ7PhdIaYIVOD2RBF7mNx0="
   matrix:
-		- GITBOOK_VERSION=2.6.7
-		- GITBOOK_VERSION=3.2.2
+    - GITBOOK_VERSION=2.6.7
+    - GITBOOK_VERSION=3.2.2
 before_script:
   - npm install
   - npm install gitbook@$GITBOOK_VERSION
 script:
   - npm test
-	- npm run coverage
+  - npm run coverage
 after_script:
   - npm install -g istanbul-coveralls
-	- istanbul-coveralls
+  - istanbul-coveralls
