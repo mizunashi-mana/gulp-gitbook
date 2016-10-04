@@ -4,7 +4,7 @@ git:
 language: node_js
 node_js:
   - stable
-  - v6
+  - lts/*
   - '0.12'
 env:
   global:
@@ -13,6 +13,9 @@ env:
   matrix:
     - GITBOOK_VERSION=2.6.7
     - GITBOOK_VERSION=3.2.2
+matrix:
+  allow_failures:
+    - node_js: '0.12'
 install:
   - npm install
   - npm install gitbook@$GITBOOK_VERSION
