@@ -1,0 +1,57 @@
+{
+  "name": "gulp-gitbook",
+  "version": "0.0.1",
+  "description": "A gulp plugin of GitBook",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "LICENSE"
+  ],
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "testonly": "mocha --require ./test/index.js test/**/*.test.js",
+    "pretest": "npm run lint",
+    "test": "npm run testonly",
+    "posttest": "npm run example",
+    "example": "gulp --gulpfile=example/config.js",
+    "coverage": "istanbul cover _mocha -- --require ./test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mizunashi-mana/gulp-gitbook.git"
+  },
+  "keywords": [
+    "gulp",
+    "gulpfriendly",
+    "gitbook"
+  ],
+  "author": {
+    "name": "Mizunashi Mana",
+    "email": "mizunashi_mana@mma.club.uec.ac.jp"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mizunashi-mana/gulp-gitbook/issues"
+  },
+  "homepage": "https://github.com/mizunashi-mana/gulp-gitbook#readme",
+  "dependencies": {
+    "extend": "^3.0.0",
+    "gulp-util": "^3.0.7"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.7.1",
+    "gitbook": "^3.2.2",
+    "gulp": "^3.9.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.1.0",
+    "sinon": "^1.17.6"
+  },
+  "peerDependencies": {
+    "gitbook": ">=2.5.0"
+  }
+}

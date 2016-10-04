@@ -1,0 +1,21 @@
+sudo: false
+git:
+  depth: 2
+language: node_js
+node_js:
+  - stable
+  - v6
+	- '0.12'
+env:
+  matrix:
+		- GITBOOK_VERSION=2.6.7
+		- GITBOOK_VERSION=3.2.2
+before_script:
+  - npm install
+  - npm install gitbook@$GITBOOK_VERSION
+script:
+  - npm test
+	- npm run coverage
+after_script:
+  - npm install -g istanbul-coveralls
+	- istanbul-coveralls

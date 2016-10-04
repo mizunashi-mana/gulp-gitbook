@@ -1,0 +1,8 @@
+/coverage/
+
+# for Example
+/example/_book/
+
+# for NPM
+node_modules/
+npm-debug.log*
