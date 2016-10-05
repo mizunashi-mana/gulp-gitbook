@@ -16,7 +16,6 @@
     "testonly": "mocha --require ./test/index.js test/**/*.test.js",
     "pretest": "npm run lint",
     "test": "npm run testonly",
-    "posttest": "npm run example",
     "example": "gulp --gulpfile=example/config.js",
     "coverage": "istanbul cover _mocha -- --require ./test/index.js"
   },
@@ -50,6 +49,7 @@
     "gulp": "^3.9.1",
     "istanbul": "^0.4.5",
     "mocha": "^3.1.0",
+    "run-sequence": "^1.2.2",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0"
   },

@@ -1,4 +1,5 @@
 {
-	"title": "Example Documentation",
-	"plugins": ["anchors"]
+  "title": "Example Documentation",
+  "description": "Example of gulp-gitbook plugin",
+  "plugins": ["anchors"]
 }
