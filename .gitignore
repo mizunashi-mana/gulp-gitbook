@@ -2,6 +2,8 @@
 
 # for Example
 /example/_book/
+/example/book.*
+!/example/book.json
 
 # for NPM
 node_modules/

@@ -87,12 +87,10 @@ var pluginError = function (message) {
   return GulpUtil.PluginError(PLUGIN_NAME, message);
 };
 
-var gulpGitbook = function (book, options, callback) {
-  options = validateOptions(book, options, callback);
-
+var _gulpGitbook = function (options) {
   var p = Promise.resolve();
 
-  if (options.noInstall) {
+  if (!options.noInstall) {
     p = p.then(function () {
       return gitbookExec('install', [
         options.book
@@ -141,31 +139,36 @@ var gulpGitbook = function (book, options, callback) {
   });
 };
 
+var gulpGitbook = function (book, options, callback) {
+  options = validateOptions(book, options, callback);
+  return _gulpGitbook(options);
+};
+
 var gulpGitbookWebsite = function (book, options, callback) {
-  options = extend({}, options);
+  options = validateOptions(book, options, callback);
   options.format = 'website';
-  return gulpGitbook(book, options, callback);
+  return _gulpGitbook(options);
 };
 gulpGitbook.website = gulpGitbookWebsite;
 
 var gulpGitbookPdf = function (book, options, callback) {
-  options = extend({}, options);
+  options = validateOptions(book, options, callback);
   options.format = 'pdf';
-  return gulpGitbook(book, options, callback);
+  return _gulpGitbook(options);
 };
 gulpGitbook.pdf = gulpGitbookPdf;
 
 var gulpGitbookEpub = function (book, options, callback) {
-  options = extend({}, options);
+  options = validateOptions(book, options, callback);
   options.format = 'epub';
-  return gulpGitbook(book, options, callback);
+  return _gulpGitbook(options);
 };
 gulpGitbook.epub = gulpGitbookEpub;
 
 var gulpGitbookMobi = function (book, options, callback) {
-  options = extend({}, options);
+  options = validateOptions(book, options, callback);
   options.format = 'mobi';
-  return gulpGitbook(book, options, callback);
+  return _gulpGitbook(options);
 };
 gulpGitbook.mobi = gulpGitbookMobi;
 
@@ -225,6 +228,7 @@ module.exports = gulpGitbook;
 
 if (process.env.GULPGITBOOK_TEST_ENV) {
   module.exports._private = {
+    _gulpGitbook: _gulpGitbook,
     promiseCallback: promiseCallback,
     isNullable: isNullable,
     validateOptions: validateOptions,

@@ -21,6 +21,7 @@ install:
   - npm install gitbook@$GITBOOK_VERSION
 script:
   - npm test
+  - npm run example
   - npm run coverage
 after_script:
   - npm install -g istanbul-coveralls
