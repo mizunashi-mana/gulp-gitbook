@@ -84,7 +84,7 @@ var validateOptions = function (book, options, callback) {
 };
 
 var pluginError = function (message) {
-  return GulpUtil.PluginError(PLUGIN_NAME, message);
+  return new GulpUtil.PluginError(PLUGIN_NAME, message);
 };
 
 var _gulpGitbook = function (options) {
